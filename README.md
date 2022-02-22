@@ -1,29 +1,9 @@
-# README #
+# AxesDoors Code Style
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This repository defines a set of conventions about how to write code for AxesDoors projects.
 
-### What is this repository for? ###
+> There is not a best codification rule. It just helps all the team understand easily the code of the other coworkers. Therefore, the developer must apply the codification rule specified in the project where it is working.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+## Included languages ##
+- [C/C++](c_cpp_style.md)
