@@ -26,11 +26,7 @@ up to standard desktop PCs. Details about C/C++ version and extensions must be d
 - Any reference of a header file (*.h) within a header file should be avoided
 - All header files should have to define guards to prevent multiple inclusion. The format of the symbol name should be FILE_NAME_H.
 
->     #ifndef FILE1_H 
-> 
->     #define FILE1_H
->     ...
->     #endif /* FILE1_H */
+>     #pragma once 
 
 - Header files must not be included in projects as files. They must be linked to project the include path.
 - Headers and source files must follow the next template
@@ -85,7 +81,7 @@ about it carefully before writing a non-explicit constructor.
 ### Loops
 - C for loops must declare the iterating variables at beggining of the loop
 
->    for (uint8_t u8i = (uint8_t)0U; u8i <= (uint8_t)3U; u8i++)
+>    for (uint8_t i = (uint8_t)0u; i <= (uint8_t)3u; i++)
 >    {
 >        
 >    }
@@ -98,7 +94,7 @@ about it carefully before writing a non-explicit constructor.
 >     GetDataFile(void);
 >       
 >     int32_t
->     ComputeRectangleArea(int32_t i32Width, int32_t i32Height);
+>     ComputeRectangleArea(int32_t width, int32_t height);
 
 
 - Class names are also written in camel-case, but always begin with a capital letter, e.g. MyClassName
@@ -115,23 +111,22 @@ start them with something unique to your project.
 >     #define MIN_VALUE(X, Y)   ((X) < (Y) ? (X) : (Y))
 
 - Hungarian notation must be used. 
-- Variables names should start with the data type and have a capital letter for each new word (camel-case). No underscores are allowed
->     int16_t i16SavingAccount;
->     uint8_t u8Line;
->     /* booleans can start with 'is' or with 'b' */
+- Variables names written camel case. No underscores are allowed
+>     int16_t savingAccount;
+>     uint8_t line;
+>     /* booleans can start with 'is' */
 >     bool isInterruptEnabled;
->     bool bInterruptEnabled;
 >     char cMyChar;
 
 
 - Non-standard data type names start with a 'T' capital letter and have a capital letter for each new word, with no underscores:
 
 >     typedef struct TLineDefinition;
->     typedef struct
+>     typedef struct THeaderTag
 >     {
->         uint8_t u8ConnFmat;
->         int16_t i16NodeCtrl;
->     }THeader;
+>         uint8_t connFmat;
+>         int16_t nodeCtrl;
+>     } THeader;
 
 - Enumerates types should start with an 'E' capital letter and have a capital letter for each new word, with no underscores: 
 
@@ -139,26 +134,20 @@ start them with something unique to your project.
 >     {
 >         ERROR_OVERCURRENT = 0,
 >         ERROR_OVERVOLTAGE
->     }EErrorCodes;
+>     } EErrorCodes;
 
 - Union types should start with an 'U' capital letter and variables inside should be camel case, without underscores:
 
 >     typedef union 
 >     {
->         uint16_t u16Word;
->         uint32_t u32DWord;
->         floatfFloat;
->     }UMsg;
-
-- The variables from an enumeration, union or non-standard data type would be:
-
->     TLineDefinition tNewLine;
->     EErrorCodes eErrCode;
->     UMsg uRxMsg;
+>         uint16_t var;
+>         uint32_t var;
+>         float var;
+>     } UMsg;
 
 - To simplify its identification, pointer variables must start with a  'p' lower case letter.
 
->     INT16* pi16Pointer;
+>     int16_t* pPointer;
 
 ### Comments
 
