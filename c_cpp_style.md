@@ -227,10 +227,10 @@ However, on the output documentation, the users will read "MainGroup Label"
 - Never put a space before a comma.
 - Always put a space after a comma.
 
->     foo (x,y); /* No */
->     foo (x ,y); /* No */
->     foo (x , y); /* No */
->     foo (x, y); /* Yes */
+>     foo(x,y); /* No */
+>     foo(x ,y); /* No */
+>     foo(x , y); /* No */
+>     foo(x, y); /* Yes */
 
 - Never put a space before an open parenthesis that contains text
 
@@ -245,9 +245,9 @@ However, on the output documentation, the users will read "MainGroup Label"
 
 >     statement. E.g.
 >     {
->         uint16_t u16Xyz = (uint16_t)123U;
+>         uint16_t xyz = (uint16_t)123u;
 >        
->         if (u16Xyz != (uint16_t)0U)
+>         if (xyz != (uint16_t)0U)
 >         {
 >             foo();
 >         }
@@ -296,10 +296,10 @@ the visibility of the code in front of this rule.
 - Integer literals & explicit cast: Literal and explicit cast must be used. Take into account the architecture you are using
 in order to use the long literal.
 
->     (uint16_t)1U /* yes! */
+>     (uint16_t)1u /* yes! */
 >     (int16_t)1 /* yes! */
->     (uint32_t)1UL /* yes! if 32 bits is considered long in the device architecture */
->     (int32_t)1L /* yes! if 32 bits is considered long in the device architecture */
+>     (uint32_t)1ul /* yes! if 32 bits is considered long in the device architecture */
+>     (int32_t)1l /* yes! if 32 bits is considered long in the device architecture */
 
 - Floating point literals & explicit cast: We always add at least one digit before and after the dot, e.g. Furthermore,
 literal and explicit cast must be used for constants.
@@ -350,7 +350,7 @@ Brackets should be used even if the statement contains only one instruction.
 >         /* Process B */
 >     }
 >     
->     if ((u8PinMapping[u8Pin] == INPUT) || (u8PinMapping[u8Pin] == OUTPUT))
+>     if ((pinMapping[pin] == INPUT) || (pinMapping[pin] == OUTPUT))
 >     {
 >         /* Something */
 >     }
@@ -401,40 +401,35 @@ If it's empty it has to be clearly documented also.
 
 - A single space must follow the statements: if, while, do and switch before the expression opening.
 
->     if (i16Value == (int16_t)10)
+>     if (value == (int16_t)10)
 >     {
->         i16Data = i16Value + (int16_t)5;
+>         data = value + (int16_t)5;
 >     }
 
 - Functions calls should not include spaces on parenthesis. After a comma space should be always placed.
 
->     Function1(i16Value1, i16Value2);
+>     Function1(value1, value2);
 
 - After a type cast should not be an space.
 
->     i16Value1 = (INT16)i32Value2;
+>     value1 = (int16_t)value2;
 
 
 - In pointer declarations, no space should be left between the type and the operator
 
->     INT16* pi16Value;
+>     int16_t* pi16Value;
 
 - Declarations of a pointer to pointer types should leave no whitespaces between asterisk operators.
 
->     INT16** pi16Value;
+>     int16_t** pi16Value;
 
 - All preprocessor conditionals must have a comment in the #endif, so it can be easily identified where they come from.
 
->     #ifndef FILE1_H 
->     #define FILE1_H
->     
 >     #if NUM_OF_FDBCKS > 1
 >     ...
 >     #elif NUM_OF_FDBCKS > 2
 >     ...
 >     #endif /* NUM_OF_FDBCKS */
->     
->     #endif /* FILE1_H */
 
 
 ### Exceptions to the rules
