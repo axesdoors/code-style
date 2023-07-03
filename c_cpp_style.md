@@ -106,8 +106,9 @@ so to use them in use code looks quite jarring.
 - Since macros have no namespaces, their names must be guaranteed not to clash with macros or symbols used in other libraries or 3rd party code, so you should
 start them with something unique to your project.
 - Macros should be aligned between them to facilitate readability.
+- Macros always must be within parenthesis.
 
->     #define MAX_ITERATIONS 25
+>     #define MAX_ITERATIONS (25u)
 >     #define MIN_VALUE(X, Y)   ((X) < (Y) ? (X) : (Y))
 
 - Hungarian notation must be used. 
@@ -116,7 +117,7 @@ start them with something unique to your project.
 >     uint8_t line;
 >     /* booleans can start with 'is' */
 >     bool isInterruptEnabled;
->     char cMyChar;
+>     char myChar;
 
 
 - Non-standard data type names start with a 'T' capital letter and have a capital letter for each new word, with no underscores:
@@ -126,7 +127,7 @@ start them with something unique to your project.
 >     {
 >         uint8_t connFmat;
 >         int16_t nodeCtrl;
->     } THeader;
+>     }THeader;
 
 - Enumerates types should start with an 'E' capital letter and have a capital letter for each new word, with no underscores: 
 
@@ -134,7 +135,7 @@ start them with something unique to your project.
 >     {
 >         ERROR_OVERCURRENT = 0,
 >         ERROR_OVERVOLTAGE
->     } EErrorCodes;
+>     }EErrorCodes;
 
 - Union types should start with an 'U' capital letter and variables inside should be camel case, without underscores:
 
@@ -143,7 +144,7 @@ start them with something unique to your project.
 >         uint16_t var;
 >         uint32_t var;
 >         float var;
->     } UMsg;
+>     }UMsg;
 
 - To simplify its identification, pointer variables must start with a  'p' lower case letter.
 
@@ -245,9 +246,9 @@ However, on the output documentation, the users will read "MainGroup Label"
 
 >     statement. E.g.
 >     {
->         uint16_t xyz = (uint16_t)123u;
+>         uint16_t xyz = 123u;
 >        
->         if (xyz != (uint16_t)0U)
+>         if (xyz != 0u)
 >         {
 >             foo();
 >         }
@@ -282,7 +283,7 @@ with the operator symbol.
 >     /* Bad: */
 >     auto t = AffineTransform::translation(x, y).
 >         scaled(2.0f).
->        rotated(0.5f);
+>         rotated(0.5f);
 
 - The general rule for the length line is max 80 characters. However it is not a strict rule, it must be always prioritized
 the visibility of the code in front of this rule.
@@ -315,11 +316,11 @@ literal and explicit cast must be used for constants.
 - The function parameters should be on the same function line if they fit; otherwise, wrap arguments at the parenthesis.
 
 >     int32_t
->     ComputeActualVelocity(int32_t i32ActualPosition, int32_ti32LastPosition);
+>     ComputeActualVelocity(int32_t actualPosition, int32_t lastPosition);
 >      
 >     int32_t
->     ComputeRegressionLine(int32_t* pi32DataArrayX, int32_t* pi32DataArrayY, 
->                           int32_t* pi32Result, int32_t* pi32Variance);
+>     ComputeRegressionLine(int32_t* pDataArrayX, int32_t* pDataArrayY, 
+>                           int32_t* pResult, int32_t* pVariance);
 
 - Functions without any parameters must use the keyword void.
 
@@ -335,13 +336,13 @@ Brackets should be used even if the statement contains only one instruction.
 
 >     if (u16ElapsedTime > SOME_THRESHOLD)
 >     {
->         i16Counter++;
+>         counter++;
 >     }
     
 - In case of using else if / else statement, it will be placed in the next line of the bracket.
 - In case of checking multiple conditions, each one must be enclosed in parenthesis.
 
->     if (bCondition == FALSE)
+>     if (isCondition == FALSE)
 >     {
 >         /* Process A */
 >     }
@@ -401,9 +402,9 @@ If it's empty it has to be clearly documented also.
 
 - A single space must follow the statements: if, while, do and switch before the expression opening.
 
->     if (value == (int16_t)10)
+>     if (value == 10)
 >     {
->         data = value + (int16_t)5;
+>         data = value + 5;
 >     }
 
 - Functions calls should not include spaces on parenthesis. After a comma space should be always placed.
@@ -417,11 +418,11 @@ If it's empty it has to be clearly documented also.
 
 - In pointer declarations, no space should be left between the type and the operator
 
->     int16_t* pi16Value;
+>     int16_t* pValue;
 
 - Declarations of a pointer to pointer types should leave no whitespaces between asterisk operators.
 
->     int16_t** pi16Value;
+>     int16_t** pValue;
 
 - All preprocessor conditionals must have a comment in the #endif, so it can be easily identified where they come from.
 
