@@ -37,15 +37,15 @@ up to standard desktop PCs. Details about C/C++ version and extensions must be d
 >     
 >     /* Defines & macros */
 >     
->     /* Global variables declaration */
+>     /* Types */
+>     
+>     /* Global variables declaration (for .h) / definition (for .c) */
 >     
 >     /* Local variables declaration (for .c) */
 >     
->     /* Local function prototypes declaration(for .c) */
->     
->     /* Global Function declaration / definition */
->     
 >     /* Local function definition (for .c) */
+>     
+>     /* Global function declaration (for .h) / definition (for .c) */
 
 ### Scoping
 
@@ -312,20 +312,17 @@ literal and explicit cast must be used for constants.
 >     .1 /* no! */
 >     .1f /* no! */
 
-- In the function definition, the return type of a function should be placed in a different line of the function.
+- In the function definition, the return type of a function should be placed in the same line of the function.
 - The function parameters should be on the same function line if they fit; otherwise, wrap arguments at the parenthesis.
 
->     int32_t
->     ComputeActualVelocity(int32_t actualPosition, int32_t lastPosition);
+>     int32_t   ComputeActualVelocity(int32_t actualPosition, int32_t lastPosition);
 >      
->     int32_t
->     ComputeRegressionLine(int32_t* pDataArrayX, int32_t* pDataArrayY, 
+>     int32_t   ComputeRegressionLine(int32_t* pDataArrayX, int32_t* pDataArrayY, 
 >                           int32_t* pResult, int32_t* pVariance);
 
 - Functions without any parameters must use the keyword void.
 
->     int32_t
->     MyFunction(void);
+>     int32_t   MyFunction(void);
 
 
 **Braces are indented based on the Allman style with some modifications**
