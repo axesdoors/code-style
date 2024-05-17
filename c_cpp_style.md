@@ -313,8 +313,8 @@ literal and explicit cast must be used for constants.
 >     .1f /* no! */
 
 - Functions names must comply with the following convention:
-    * Private (static): the name must follow camelCase convention (first letter in lower case).
-    * Public: the name must start with the module name in all caps, followed by an underscore, followed by the name of the function in camelCase (first letter in lower case).
+    * Private (static): The name must follow camelCase convention (first letter in lower case).
+    * Public: The name must start with the module name in all caps, followed by an underscore, followed by the name of the function in camelCase (first letter in lower case).
 
 >       /* Private function */     
 >       static int32_t myFunction(void);
