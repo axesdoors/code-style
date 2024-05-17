@@ -37,15 +37,15 @@ up to standard desktop PCs. Details about C/C++ version and extensions must be d
 >     
 >     /* Defines & macros */
 >     
->     /* Global variables declaration */
+>     /* Types */
+>     
+>     /* Global variables declaration (for .h) / definition (for .c) */
 >     
 >     /* Local variables declaration (for .c) */
 >     
->     /* Local function prototypes declaration(for .c) */
->     
->     /* Global Function declaration / definition */
->     
 >     /* Local function definition (for .c) */
+>     
+>     /* Global function declaration (for .h) / definition (for .c) */
 
 ### Scoping
 
@@ -88,14 +88,15 @@ about it carefully before writing a non-explicit constructor.
 
 ### Naming
 - Filenames should be all lowercase and can include optionally underscores '_'. 
-- Function names are also written in camel-case, but always begin with a capital letter.
+- Functions names must comply with the following convention:
+    * Private (static): The name must follow camelCase convention (first letter in lower case).
+    * Public: The name must start with the module name in all caps, followed by an underscore, followed by the name of the function in camelCase (first letter in lower case).
 
->     int16_t
->     GetDataFile(void);
->       
->     int32_t
->     ComputeRectangleArea(int32_t width, int32_t height);
-
+>       /* Private function */     
+>       static int32_t myFunction(void);
+>
+>       /* Public function */  
+>       int32_t MODULE_ComputeRectangleArea(int32_t width, int32_t height);
 
 - Class names are also written in camel-case, but always begin with a capital letter, e.g. MyClassName
 - Namespaces are also written in camel-case, but always begin with a capital letter. e.g. MyClassName
@@ -312,20 +313,20 @@ literal and explicit cast must be used for constants.
 >     .1 /* no! */
 >     .1f /* no! */
 
-- In the function definition, the return type of a function should be placed in a different line of the function.
+- In the function definition, the return type of a function should be placed in the same line of the function. Only one space
+must be present between the type and the name of the function.
 - The function parameters should be on the same function line if they fit; otherwise, wrap arguments at the parenthesis.
 
->     int32_t
->     ComputeActualVelocity(int32_t actualPosition, int32_t lastPosition);
+>     static int32_t computeActualVelocity(int32_t actualPosition, int32_t lastPosition);
 >      
->     int32_t
->     ComputeRegressionLine(int32_t* pDataArrayX, int32_t* pDataArrayY, 
+>     static int32_t computeRegressionLine(int32_t* pDataArrayX, int32_t* pDataArrayY, 
 >                           int32_t* pResult, int32_t* pVariance);
+
+
 
 - Functions without any parameters must use the keyword void.
 
->     int32_t
->     MyFunction(void);
+>     static int32_t myFunction(void);
 
 
 **Braces are indented based on the Allman style with some modifications**
@@ -409,7 +410,7 @@ If it's empty it has to be clearly documented also.
 
 - Functions calls should not include spaces on parenthesis. After a comma space should be always placed.
 
->     Function1(value1, value2);
+>     type function1(value1, value2);
 
 - After a type cast should not be an space.
 
