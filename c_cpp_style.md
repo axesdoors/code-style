@@ -88,14 +88,15 @@ about it carefully before writing a non-explicit constructor.
 
 ### Naming
 - Filenames should be all lowercase and can include optionally underscores '_'. 
-- Function names are also written in camel-case, but always begin with a capital letter.
+- Functions names must comply with the following convention:
+    * Private (static): The name must follow camelCase convention (first letter in lower case).
+    * Public: The name must start with the module name in all caps, followed by an underscore, followed by the name of the function in camelCase (first letter in lower case).
 
->     int16_t
->     GetDataFile(void);
->       
->     int32_t
->     ComputeRectangleArea(int32_t width, int32_t height);
-
+>       /* Private function */     
+>       static int32_t myFunction(void);
+>
+>       /* Public function */  
+>       int32_t MODULE_ComputeRectangleArea(int32_t width, int32_t height);
 
 - Class names are also written in camel-case, but always begin with a capital letter, e.g. MyClassName
 - Namespaces are also written in camel-case, but always begin with a capital letter. e.g. MyClassName
@@ -311,16 +312,6 @@ literal and explicit cast must be used for constants.
 >     0.f /* no! */
 >     .1 /* no! */
 >     .1f /* no! */
-
-- Functions names must comply with the following convention:
-    * Private (static): The name must follow camelCase convention (first letter in lower case).
-    * Public: The name must start with the module name in all caps, followed by an underscore, followed by the name of the function in camelCase (first letter in lower case).
-
->       /* Private function */     
->       static int32_t myFunction(void);
->
->       /* Public function */  
->       int32_t MODULE_myFunction(void);
 
 - In the function definition, the return type of a function should be placed in the same line of the function. Only one space
 must be present between the type and the name of the function.
