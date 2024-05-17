@@ -312,17 +312,30 @@ literal and explicit cast must be used for constants.
 >     .1 /* no! */
 >     .1f /* no! */
 
-- In the function definition, the return type of a function should be placed in the same line of the function.
+- Functions names must comply with the following convention:
+    * Private (static): the name must follow camelCase convention (first letter in lower case).
+    * Public: the name must start with the module name in all caps, followed by an underscore, followed by the name of the function in camelCase (first letter in lower case).
+
+>       /* Private function */     
+>       static int32_t myFunction(void);
+>
+>       /* Public function */  
+>       int32_t MODULE_myFunction(void);
+
+- In the function definition, the return type of a function should be placed in the same line of the function. Only one space
+must be present between the type and the name of the function.
 - The function parameters should be on the same function line if they fit; otherwise, wrap arguments at the parenthesis.
 
->     int32_t   ComputeActualVelocity(int32_t actualPosition, int32_t lastPosition);
+>     static int32_t computeActualVelocity(int32_t actualPosition, int32_t lastPosition);
 >      
->     int32_t   ComputeRegressionLine(int32_t* pDataArrayX, int32_t* pDataArrayY, 
+>     static int32_t computeRegressionLine(int32_t* pDataArrayX, int32_t* pDataArrayY, 
 >                           int32_t* pResult, int32_t* pVariance);
+
+
 
 - Functions without any parameters must use the keyword void.
 
->     int32_t   MyFunction(void);
+>     static int32_t myFunction(void);
 
 
 **Braces are indented based on the Allman style with some modifications**
@@ -406,7 +419,7 @@ If it's empty it has to be clearly documented also.
 
 - Functions calls should not include spaces on parenthesis. After a comma space should be always placed.
 
->     Function1(value1, value2);
+>     type function1(value1, value2);
 
 - After a type cast should not be an space.
 
