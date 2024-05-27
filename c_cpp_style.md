@@ -14,9 +14,9 @@ up to standard desktop PCs. Details about C/C++ version and extensions must be d
 - Use <stdint.h> types whenever is possible.
 - if <stdint.h> is not available, basic types must include the size information.
 
->     unsigned integer /* Not allowed */
->     UINT32 /* Allowed */
->     uint32_t /* Allowed and preferred */
+>     unsigned integer // Not allowed
+>     UINT32 // Allowed
+>     uint32_t // Allowed and preferred
 
 > This is very critical in embedded systems where the size of an integer varies between MCUs.
 
@@ -31,21 +31,47 @@ up to standard desktop PCs. Details about C/C++ version and extensions must be d
 - Header files must not be included in projects as files. They must be linked to project the include path.
 - Headers and source files must follow the next template
 
->     /* File documentation */
+>   /***********************************  (Must occupy the entire page)
+>   * File documentation 
+>
+>   ************************************/ (Must occupy the entire page)
 >     
->     /* Includes */
+>   /***********************************  (Must occupy the entire page)
+>   * Includes
+
+>    ************************************/ (Must occupy the entire page)
 >     
->     /* Defines & macros */
+>   /***********************************  (Must occupy the entire page)
+>   * Defines & macros
+
+>   ************************************/ (Must occupy the entire page)
 >     
->     /* Types */
+>   /***********************************  (Must occupy the entire page)
+>   * Types
+
+>   ************************************/ (Must occupy the entire page)
 >     
->     /* Global variables declaration (for .h) / definition (for .c) */
+>   /***********************************  (Must occupy the entire page)
+>   * Global variables declaration (for .h) / definition (for .c)
+
+>   ************************************/ (Must occupy the entire page)
 >     
->     /* Local variables declaration (for .c) */
+>   /***********************************  (Must occupy the entire page)
+>   * Local variables declaration (for .c)
+
+>   ************************************/ (Must occupy the entire page)
 >     
->     /* Local function definition (for .c) */
+>   /***********************************  (Must occupy the entire page)
+>   * Local function definition (for .c)
+
+>   ************************************/ (Must occupy the entire page)
 >     
->     /* Global function declaration (for .h) / definition (for .c) */
+>   /***********************************  (Must occupy the entire page)
+>   * Global function declaration (for .h) / definition (for .c)
+
+>   ************************************/ (Must occupy the entire page)
+    
+- The section titles Must occupy the entire page
 
 ### Scoping
 
@@ -92,10 +118,10 @@ about it carefully before writing a non-explicit constructor.
     * Private (static): The name must follow camelCase convention (first letter in lower case).
     * Public: The name must start with the module name in all caps, followed by an underscore, followed by the name of the function in camelCase (first letter in lower case).
 
->       /* Private function */     
+>       // Private function       
 >       static int32_t myFunction(void);
 >
->       /* Public function */  
+>       // Public function   
 >       int32_t MODULE_ComputeRectangleArea(int32_t width, int32_t height);
 
 - Class names are also written in camel-case, but always begin with a capital letter, e.g. MyClassName
@@ -116,7 +142,7 @@ start them with something unique to your project.
 - Variables names written camel case. No underscores are allowed
 >     int16_t savingAccount;
 >     uint8_t line;
->     /* booleans can start with 'is' */
+>     // booleans can start with 'is'
 >     bool isInterruptEnabled;
 >     char myChar;
 
@@ -219,8 +245,8 @@ However, on the output documentation, the users will read "MainGroup Label"
 - TAB characters are completely forbidden.
 - End Of Line (EOL) must be CRLF which corresponds to Windows convention.
 - Always put a space before and after all binary operators! 
->     x = 1+y - 2*z / 3; /* Bad */
->     x = 1 + y - 2 * z / 3; /* Good */
+>     x = 1+y - 2*z / 3; // Bad
+>     x = 1 + y - 2 * z / 3; // Good
 
 
 - The ! operator should always be followed by a space, e.g. if (! foo)
@@ -229,10 +255,10 @@ However, on the output documentation, the users will read "MainGroup Label"
 - Never put a space before a comma.
 - Always put a space after a comma.
 
->     foo(x,y); /* No */
->     foo(x ,y); /* No */
->     foo(x , y); /* No */
->     foo(x, y); /* Yes */
+>     foo(x,y); // No
+>     foo(x ,y); // No
+>     foo(x , y); // No
+>     foo(x, y); // Yes
 
 - Never put a space before an open parenthesis that contains text
 
@@ -268,20 +294,20 @@ However, on the output documentation, the users will read "MainGroup Label"
 - When splitting expressions containing operators (or the dot operator) across multiple lines each new line should begin
 with the operator symbol.
 
->     auto xyz = foo + bar /* This makes it clear at a glance */
->                 + func(123) /* that all the lines must be continuations of */
->                 - def + 4321; /* the preceding ones. */
+>     auto xyz = foo + bar // This makes it clear at a glance
+>                 + func(123) // that all the lines must be continuations of
+>                 - def + 4321; // the preceding ones.
 >     
->     auto xyz = foo + bar + /* Not so good.. It takes more effort here */
->                func(123) - /* to see that "func" here is actually part */
->                def + 4321; /* of the previous line and not a new statement. */
+>     auto xyz = foo + bar + // Not so good.. It takes more effort here
+>                func(123) - // to see that "func" here is actually part
+>                def + 4321; // of the previous line and not a new statement.
 >     
->     /* Good: */
+>     // Good:
 >     auto t = AffineTransform::translation(x, y)
 >                              .scaled(2.0f)
 >                              .rotated(0.5f);
 >     
->     /* Bad: */
+>     // Bad:
 >     auto t = AffineTransform::translation(x, y).
 >         scaled(2.0f).
 >         rotated(0.5f);
@@ -289,8 +315,13 @@ with the operator symbol.
 - The general rule for the length line is max 80 characters. However it is not a strict rule, it must be always prioritized
 the visibility of the code in front of this rule.
 
-- Comments has to use /* */.
-- Always leave a space before the text in a single line /* comment */
+- Comments has to use //.
+- Block comments has to use /* */.
+- For Macro, defines and variables:
+>   #define NUM_CIRCULAR_BUFF_ENTRIES   (32u)                               /**< Number of entries in circular buffer, this parameter should be equal to 2^x */
+
+
+- Always leave a space before the text in a single line // Comment
 - Hexadecimal is usually written in capital letter 
 
 >     0xABCDEF
@@ -298,20 +329,20 @@ the visibility of the code in front of this rule.
 - Integer literals & explicit cast: Literal and explicit cast must be used. Take into account the architecture you are using
 in order to use the long literal.
 
->     (uint16_t)1u /* yes! */
->     (int16_t)1 /* yes! */
->     (uint32_t)1ul /* yes! if 32 bits is considered long in the device architecture */
->     (int32_t)1l /* yes! if 32 bits is considered long in the device architecture */
+>     (uint16_t)1u // yes!
+>     (int16_t)1 // yes!
+>     (uint32_t)1ul // yes! if 32 bits is considered long in the device architecture
+>     (int32_t)1l // yes! if 32 bits is considered long in the device architecture
 
 - Floating point literals & explicit cast: We always add at least one digit before and after the dot, e.g. Furthermore,
 literal and explicit cast must be used for constants.
 
->     0.0 /* no! */
->     (float)0.0f /* yes! */
->     0. /* no! */
->     0.f /* no! */
->     .1 /* no! */
->     .1f /* no! */
+>     0.0 // no!
+>     (float)0.0f // yes!
+>     0. // no!
+>     0.f // no!
+>     .1 // no!
+>     .1f // no!
 
 - In the function definition, the return type of a function should be placed in the same line of the function. Only one space
 must be present between the type and the name of the function.
@@ -391,12 +422,12 @@ If it's empty it has to be clearly documented also.
 >     switch (...)
 >     {
 >         case SOME_CASE_1:
->               /* Fallthrough */
+>               // Fallthrough
 >         case SOME_CASE_2:
->               /* Code */
+>               // Code
 >               break;
 >         default:
->               /* Nothing */
+>               // Nothing
 >               break;
 >     }
 >     
@@ -431,7 +462,7 @@ If it's empty it has to be clearly documented also.
 >     ...
 >     #elif NUM_OF_FDBCKS > 2
 >     ...
->     #endif /* NUM_OF_FDBCKS */
+>     #endif // NUM_OF_FDBCKS
 
 
 ### Exceptions to the rules
