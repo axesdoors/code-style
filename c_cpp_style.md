@@ -317,6 +317,10 @@ the visibility of the code in front of this rule.
 
 - Comments has to use //.
 - Block comments has to use /* */.
+- For Macro, defines and variables:
+>   #define NUM_CIRCULAR_BUFF_ENTRIES   (32u)                               /**< Number of entries in circular buffer, this parameter should be equal to 2^x */
+
+
 - Always leave a space before the text in a single line // Comment
 - Hexadecimal is usually written in capital letter 
 
