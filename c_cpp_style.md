@@ -249,7 +249,7 @@ However, on the output documentation, the users will read "MainGroup Label"
 >     x = 1 + y - 2 * z / 3; // Good
 
 
-- The ! operator should always be followed by a space, e.g. if (! foo)
+- The ! operator should never be followed by a space , e.g. return !foo;
 - The ~ operator should be preceded by a space, but not followed by one.
 - The ++ and -- operators should have no spaces between the operator and its operand.
 - Never put a space before a comma.
